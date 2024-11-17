@@ -68,6 +68,7 @@ time.sleep(4)
 codeNames = []
 titleNames = []
 chapterNames = []
+sectionNames = []
 driver.find_element(By.XPATH, "//a[text()='Texas Statutes']").click()
 time.sleep(2)
 
@@ -89,6 +90,16 @@ for option in dropdown_options:
         chapter_dropdown_options = driver.find_elements(By.XPATH, "//a[contains(text(), 'CHAPTER')]")
         for chapter in chapter_dropdown_options:
             chapterNames.append(chapter.text)
+            WebDriverWait(driver, 10).until(
+            EC.presence_of_all_elements_located((By.CLASS_NAME, "HTMLicon"))  
+            )
+
+            htmlicon_elements = driver.find_elements(By.CLASS_NAME, "HTMLicon")
+            for htmlicon in htmlicon_elements:
+                href = htmlicon.get_attribute("href")
+                if href:
+                    sectionNames.append(href)
+
             
 
 
