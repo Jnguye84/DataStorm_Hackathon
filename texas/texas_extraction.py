@@ -57,6 +57,7 @@ else:
         # Access the current CODE by index
         option = dropdown_options[i]
         print(f"Accessing CODE: {option.text}")
+
         # Add the code name and click the option
         codeNames.append(option.text)
         option.click()
